@@ -24,24 +24,38 @@
             <div class="modal-header">
               <h3 id="modal-header-txt">Share <b>Board name</b> with others</h3>
             </div>
-            <div class="modal-body">
-              <div class="emails-editor">
-                <span class="emails-editor__wrapper">
-                  <div class="emails-editor__content">x</div>
+            <div class="modal-body container">
+              <div class="emails-editor row">
+                <div class="emails-editor__box col-auto">
+                  <div class="emails-editor__title">test@miro.com</div>
+                  <button class="emails-editor__delete"></button>
+                </div>
+                <div id="add-more-people" class="col-auto order-last">
                   <input type="text" placeholder="Add more people..." class="emails-editor__input" spellcheck="false">
-                </span>
+                </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn">Add email</button>
+            <button id="add" type="button" class="btn">Add email</button>
             <button type="button" class="btn">Get emails count</button>
           </div>
         </div>
       </div>
     </div>
 
-    <script></script>
+    <script src="src/emails-input.js"></script>
+    <script>
+      document.getElementById('add').onclick = () => {
+        addEmailBox('miro@test.com');
+      }
+
+      const ph = document.getElementById('add-more-people').firstElementChild;
+      ph.onchange = () => {
+        addEmailBox(ph.value);
+        ph.value = null;
+      }
+    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>

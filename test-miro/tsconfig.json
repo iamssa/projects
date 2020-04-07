@@ -1,4 +1,17 @@
 {
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [
+      "dom",
+      "es5",
+      "es6"
+    ],
+    "sourceMap": true
+  },
+  "include": [
+    "app/src/*"
+  ],
   "exclude": [
     "*/__tests__/"
   ]
