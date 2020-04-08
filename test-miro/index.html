@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="./stylesheets/index.css">
+  <link rel="stylesheet" href="./app/stylesheets/index.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 
 <body>
   <div class="wrapper">
-    <img src="./../../../board-background.png" alt="board">
+    <img src="./board-background.png" alt="board">
     <button id="share-btn" type="button" class="btn btn-primary" data-toggle="modal"
       data-target="#share-modal"></button>
     <!-- Modal -->
@@ -40,11 +40,14 @@
       </div>
     </div>
 
-    <script src="src/emails-input.js"></script>
+    <script src="./app/src/emails-input.js"></script>
     <script>
+      /**
+       * Set events to buttons
+       */
       document.getElementById('add-random-email').onclick = () => {
-        addEmailBox(Math.random().toString(36).substring(2, 15) + '@' + Math.random().toString(36).substring(2, 10) +
-        '.com');
+        const randomEmail = `${Math.random().toString(36).substring(2, 15)}@${Math.random().toString(36).substring(2, 10)}.com`;
+        addEmailBox();
       }
       document.getElementById('get-count').onclick = () => {
         const validEmails = [];
@@ -55,6 +58,9 @@
         alert(`You have entered ${validEmails.length} valid emails.`);
       }
 
+      /**
+       * Set events to input
+       */
       const input = document.getElementById('emails-editor__input');
       input.onchange = () => {
         addEmailBox(input.value);

@@ -1,18 +1,30 @@
+/**
+ * Remove email component from panel
+ */
 const deteleEmailBox = (element: HTMLDivElement) => {
   element.parentNode.removeChild(element);
 }
 
+/**
+ * Email validation
+ */
 const isValidEmail = (email: string): boolean => {
   const regEx = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 
   return email.match(regEx) !== null;
 }
 
+/**
+ * Add error bottom-line and remove blue background
+ */
 const showError = (emailBox: HTMLDivElement, title: HTMLDivElement) => {
   emailBox.setAttribute('class', 'emails-editor__box transparent-box col-auto');
   title.setAttribute('class', 'emails-editor__title invalid-email');
 }
 
+/**
+ * Add email component to panel
+ */
 const addEmailBox = (email: string) => {
   const emailsPanel = document.getElementsByClassName('emails-editor');
   const emailBox = document.createElement('div');
@@ -51,6 +63,9 @@ const addEmailBox = (email: string) => {
   if (!isValidEmail(email)) showError(emailBox, title);
 }
 
+/**
+ * Check comma in input and add component if exist
+ */
 const checkCommaAndAddEmailBox = (emailInput: HTMLInputElement) => {
   const inputValue = emailInput.value;
   const comma = ',';

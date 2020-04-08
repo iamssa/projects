@@ -9,7 +9,8 @@ button {
 }
 
 .wrapper img {
-  max-width: 100%;
+  width: -webkit-fill-available;
+  width: 100%;
 }
 
 input {
@@ -59,7 +60,7 @@ input {
 .blue-box {
   border-radius: 8px 8px 0px 0px;
   background: #F8F8F7;
-  padding: $spacer;
+  padding: $spacer !important;
   padding-left: $spacer * 1.5625;
   padding-right: $spacer * 1.5625;
   padding-bottom: 0;
@@ -81,7 +82,8 @@ input {
   border-radius: 4px;
   padding: 6px 7px;
   margin: 0 !important;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .emails-editor__box {
