@@ -26,19 +26,15 @@
             </div>
             <div class="modal-body container">
               <div class="emails-editor row">
-                <div class="emails-editor__box col-auto">
-                  <div class="emails-editor__title">test@miro.com</div>
-                  <button class="emails-editor__delete"></button>
-                </div>
                 <div id="add-more-people" class="col-auto order-last">
-                  <input type="text" placeholder="Add more people..." class="emails-editor__input" spellcheck="false">
+                  <input type="text" id="emails-editor__input" placeholder="Add more people..." spellcheck="false">
                 </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button id="add" type="button" class="btn">Add email</button>
-            <button type="button" class="btn">Get emails count</button>
+            <button id="add-random-email" type="button" class="btn">Add email</button>
+            <button id="get-count" type="button" class="btn">Get emails count</button>
           </div>
         </div>
       </div>
@@ -46,14 +42,26 @@
 
     <script src="src/emails-input.js"></script>
     <script>
-      document.getElementById('add').onclick = () => {
-        addEmailBox('miro@test.com');
+      document.getElementById('add-random-email').onclick = () => {
+        addEmailBox(Math.random().toString(36).substring(2, 15) + '@' + Math.random().toString(36).substring(2, 10) +
+        '.com');
+      }
+      document.getElementById('get-count').onclick = () => {
+        const validEmails = [];
+        document.querySelectorAll('.emails-editor__box').forEach((em) => {
+          const email = em.firstElementChild.innerText;
+          if (isValidEmail(email)) validEmails.push(email);
+        });
+        alert(`You have entered ${validEmails.length} valid emails.`);
       }
 
-      const ph = document.getElementById('add-more-people').firstElementChild;
-      ph.onchange = () => {
-        addEmailBox(ph.value);
-        ph.value = null;
+      const input = document.getElementById('emails-editor__input');
+      input.onchange = () => {
+        addEmailBox(input.value);
+        input.value = null;
+      }
+      input.oninput = () => {
+        checkCommaAndAddEmailBox(input);
       }
     </script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

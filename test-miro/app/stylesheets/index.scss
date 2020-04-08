@@ -75,11 +75,13 @@ input {
 }
 
 .emails-editor {
+  height: 96px;
   background: #FFFFFF;
   border: 1px solid #C3C2CF;
   border-radius: 4px;
   padding: 6px 7px;
   margin: 0 !important;
+  overflow: scroll;
 }
 
 .emails-editor__box {
@@ -96,10 +98,14 @@ input {
   width: auto;
   display: inline-block;
   outline: none;
+  max-width: 350px;
+  overflow: hidden;
+  text-transform: none;
+  white-space: nowrap;
 }
 
-.emails-editor__input {
-  padding: 0 0 0 10px !important;
+#emails-editor__input {
+  padding: 0 0 0 5px !important;
   position: absolute;
   top: 0;
   left: 0;
